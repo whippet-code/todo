@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 //import components
 import Todo from "./Todo";
@@ -7,7 +7,7 @@ import Todo from "./Todo";
 import { useSelector, useDispatch } from "react-redux";
 
 // import actions
-import { addTodo, deleteTodo, editTodo, markAsCompleted } from "../store/todos";
+import { addTodo } from "../store/todos";
 
 function Todos() {
   // setup store "data" in this component
@@ -22,25 +22,31 @@ function Todos() {
   // set up state for userInput in add To box
   let [userInput, setUserInput] = useState("");
 
+  ////////////
+  //////////////
+  // HERE - setting up useRef and useEffect to track userInput, focus? clear input field upon submit
+
+  let inputRef = useRef("");
+
   // Input field and add todo.
   // itterate the state.data object and create a todo from each id (pass as props????? to each Todo)
   return (
-    <div>
-      <form>
-        <label>
-          Add new Todo
-          <input
-            type="text"
-            name="value"
-            onChange={(e) => setUserInput(e.target.value)}
-            value={userInput}
-          ></input>
-          <button type="button" onClick={() => dispatch(addTodo(userInput))}>
-            Add Todo
-          </button>
-        </label>
+    <div className="flex flex-col bg-slate-500 p-6">
+      <h1>ToDo List</h1>
+      <form className="flex flex-col self-center w-80">
+        <input
+          type="text"
+          name="value"
+          onBlur={(e) => {
+            setUserInput(e.target.value);
+            e.target.value = "";
+          }}
+          value={userInput}
+        ></input>
+        <button type="button" onClick={() => dispatch(addTodo(userInput))}>
+          Add Todo
+        </button>
       </form>
-      <h2>ToDo List</h2>
       {
         //Find id's of todos in store (keys in todos)
         // map this array and for each key, render it's <Todo />. Passing props

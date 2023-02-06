@@ -1,5 +1,5 @@
 // make store accessable in componenet
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 // import actions
 import { deleteTodo, editTodo, markAsCompleted } from "../store/todos";
@@ -12,9 +12,9 @@ function Todo(props) {
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <div className="flex flex-col self-center w-80 p-10 border-gray-50 border-2 mt-8">
       <h4>{props.content}</h4>
-      <form>
+      <form className="flex flex-col self-center w-80">
         <button type="button" onClick={() => dispatch(deleteTodo(props.id))}>
           Delete
         </button>
