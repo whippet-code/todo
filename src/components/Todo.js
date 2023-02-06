@@ -12,7 +12,7 @@ function Todo(props) {
   const dispatch = useDispatch();
 
   return (
-    <div className="flex flex-col self-center w-80 p-10 border-gray-50 border-2 mt-8">
+    <div className="flex flex-col self-center w-80 p-10 border-gray-50 border-2 mt-8 rounded-l">
       <h4>{props.content}</h4>
       <form className="flex flex-col self-center w-80">
         <button type="button" onClick={() => dispatch(deleteTodo(props.id))}>
