@@ -19,7 +19,9 @@ export const todoSlice = createSlice({
     addTodo: (state, action) => {
       // add new todo into state.data at id nextId. Content pulled from action, set completed to false
       // increase state.nextId by 1
-      console.log(`ADD - state - ${state}.. action - ${action}`);
+      console.log(
+        `ADD - state - ${state.data[1].content}.. action - ${action}`
+      );
     },
     //delete remove action id passed object from state.data
     deleteTodo: (state, action) => {
@@ -34,7 +36,10 @@ export const todoSlice = createSlice({
     },
     markAsCompleted: (state, action) => {
       // take id from passed in data and mark this todo (state.data."todoid".completed = true)
-      console.log(`COMPLETED - state - ${state}.. action - ${action}`);
+      //get id
+      const id = console.log(
+        `COMPLETED - state - ${state}.. action - ${action}`
+      );
     },
   },
 });

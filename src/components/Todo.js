@@ -1,4 +1,4 @@
-function Todo() {
+function Todo(props) {
   return (
     <div>
       <h3>Individual todo</h3>
@@ -11,6 +11,12 @@ function Todo() {
           <input type="text"></input>
         </label>
         <button>Edit todo</button>
+        <button
+          type="button"
+          onClick={() => console.log(props.todoId) /*dispatch(addTodo(e.key))*/}
+        >
+          Add Todo
+        </button>
       </form>
     </div>
   );

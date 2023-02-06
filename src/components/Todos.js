@@ -17,6 +17,7 @@ function Todos() {
   //set up useDispatch() hook
   const dispatch = useDispatch();
 
+  console.log(todos);
   // itterate the state.data object and create a todo from each id (pass as props????? to each Todo)
   return (
     <div>
@@ -24,13 +25,15 @@ function Todos() {
         <label>
           Add new Todo<input type="text"></input>
         </label>
-        <button onClick={() => dispatch(addTodo())}>Add Todo</button>
       </form>
       <h2>ToDo List</h2>
-      <Todo />
+      {for (const [key, value] of todos) {
+          <Todo key="todo[0]" todoId="todo[0]" content='todo.content' />}}
+      <Todo key="1" todoId="1" />
       <Todo />
     </div>
   );
 }
+
 
 export default Todos;
