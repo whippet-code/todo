@@ -1,8 +1,9 @@
+// Todo Component - takes props (id & content)
 function Todo(props) {
   return (
     <div>
       <h3>Individual todo</h3>
-      <h4>Todo content</h4>
+      <h4>{props.content}</h4>
       <form>
         <button>Delete</button>
         <button>Completed</button>
@@ -13,7 +14,7 @@ function Todo(props) {
         <button>Edit todo</button>
         <button
           type="button"
-          onClick={() => console.log(props.todoId) /*dispatch(addTodo(e.key))*/}
+          onClick={() => console.log(props.id) /*dispatch(addTodo(e.key))*/}
         >
           Add Todo
         </button>
