@@ -16,8 +16,6 @@ function Todos() {
   const todos = useSelector((state) => state.todos.data);
   const keys = Object.keys(todos);
 
-  const nextTodoId = useSelector((state) => state.todos.nextId);
-
   //set up useDispatch() hook
   const dispatch = useDispatch();
 

@@ -27,17 +27,14 @@ export const todoSlice = createSlice({
       };
       // append todos with new todo
       state.data[id] = newTodo;
-      // verify added
-      console.log(state.data);
 
       // increase state.nextId by 1
       state.nextId = state.nextId + 1;
     },
-    //delete remove action id passed object from state.data
+    //delete remove action, id passed in via action.payload
     deleteTodo: (state, action) => {
-      // get id to delete
       // remove object from state.data
-      console.log(`DELETE - state - ${state}.. action - ${action}`);
+      delete state.data[action.payload];
     },
     // edit - get .data.id from state and passed in id
     editTodo: (state, action) => {
@@ -45,9 +42,9 @@ export const todoSlice = createSlice({
       console.log(`EDIT - state - ${state}.. action - ${action}`);
     },
     markAsCompleted: (state, action) => {
-      // take id from passed in data and mark this todo (state.data."todoid".completed = true)
-      //get id
-      console.log(`COMPLETED - state - ${state}.. action - ${action}`);
+      // take id from passed in action.payload and mark this todo (state.data."todoid".completed = true)
+      state.data[action.payload].completed =
+        !state.data[action.payload].completed;
     },
   },
 });
