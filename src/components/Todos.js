@@ -44,6 +44,7 @@ function Todos() {
       >
         <input
           type="text"
+          className="pl-1"
           id="inputField"
           ref={inputRef}
           name="value"

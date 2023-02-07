@@ -5,7 +5,7 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="App flex flex-col content-center justify-center w-screen h-screen">
+    <div className="App flex flex-col content-center justify-center w-screen h-screen font-mono font-semibold">
       <Todos />
     </div>
   );
