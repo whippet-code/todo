@@ -6,32 +6,43 @@ import { deleteTodo, editTodo, markAsCompleted } from "../store/todos";
 
 // Todo Component - takes props (id & content)
 function Todo(props) {
-  // make variable for just todo data
-  //const todos = useSelector((state) => state.todos.data);
   //set up useDispatch() hook for actions to be callable
   const dispatch = useDispatch();
 
+  // each todo has a completed, edit & delete button. Use props.id to call dispatch with id as payload
   return (
-    <div className="flex flex-col self-center w-80 p-10 border-gray-50 border-2 mt-8 rounded-xl">
-      <h4>{props.content}</h4>
-      <form className="flex flex-col self-center w-80">
-        <button type="button" onClick={() => dispatch(deleteTodo(props.id))}>
-          Delete
-        </button>
-        <button
-          type="button"
-          onClick={() => dispatch(markAsCompleted(props.id))}
-        >
-          Completed
-        </button>
-        <br></br>
-        <label>
-          <input type="text" value=""></input>
-        </label>
-        <button type="button" onClick={console.log("")}>
-          Edit todo
-        </button>
-      </form>
+    <div className="flex flex-col self-center w-80 mb-1 rounded">
+      <div className="flex justify-between text-gray-100 bg-gray-600 border-2 border-gray-700 rounded pl-1">
+        <h4 id={props.id}>{props.content}</h4>
+        <div>
+          <button
+            className="bg-green-900 h-8 w-8 rounded text-white"
+            type="button"
+            onClick={(e) => {
+              dispatch(markAsCompleted(props.id));
+              document
+                .getElementById(props.id)
+                .classList.toggle("line-through");
+            }}
+          >
+            &#10003;
+          </button>
+          <button
+            className="bg-yellow-600 h-8 w-8 rounded text-white"
+            type="button"
+            onClick={() => dispatch(editTodo(props.id))}
+          >
+            &#128393;
+          </button>
+          <button
+            className="bg-red-900 h-8 w-8 rounded text-white"
+            type="button"
+            onClick={() => dispatch(deleteTodo(props.id))}
+          >
+            X
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

@@ -38,8 +38,14 @@ export const todoSlice = createSlice({
     },
     // edit - get .data.id from state and passed in id
     editTodo: (state, action) => {
-      // state.data(action.id.content) = new action.content string
-      console.log(`EDIT - state - ${state}.. action - ${action}`);
+      //prompt user for new todo text
+      let newTodo = prompt(
+        "Editied todo note. Press return with no input to cancel edit."
+      );
+      // only edit if a value is entered
+      if (newTodo !== "") {
+        state.data[action.payload].content = newTodo;
+      }
     },
     markAsCompleted: (state, action) => {
       // take id from passed in action.payload and mark this todo (state.data."todoid".completed = true)

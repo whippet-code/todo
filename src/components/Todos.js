@@ -25,26 +25,30 @@ function Todos() {
   ////////////
   //////////////
   // HERE - setting up useRef and useEffect to track userInput, focus? clear input field upon submit
+  // Edit todo needs coding
 
   let inputRef = useRef("");
 
   // Input field and add todo.
   // itterate the state.data object and create a todo from each id (pass as props????? to each Todo)
   return (
-    <div className="flex flex-col bg-slate-500 p-6">
-      <h1>ToDo List</h1>
-      <form className="flex flex-col self-center w-80">
+    <div className="flex flex-col self-center bg-slate-500 p-4 w-100 h-screen rounded">
+      <h1 className="text-gray-100 font-light text-4xl">
+        Todo List - React Redux v.1
+      </h1>
+      <form className="flex self-center content-center w-100 mb-1 p-2">
         <input
           type="text"
           name="value"
-          onBlur={(e) => {
-            setUserInput(e.target.value);
-            e.target.value = "";
-          }}
+          onChange={(e) => setUserInput(e.target.value)}
           value={userInput}
         ></input>
-        <button type="button" onClick={() => dispatch(addTodo(userInput))}>
-          Add Todo
+        <button
+          type="button"
+          className="bg-green-900 h-8 w-8 rounded text-white border-x-yellow-50 border-2"
+          onClick={() => dispatch(addTodo(userInput))}
+        >
+          +
         </button>
       </form>
       {
