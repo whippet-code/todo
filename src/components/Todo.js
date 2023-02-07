@@ -11,7 +11,7 @@ function Todo(props) {
 
   // each todo has a completed, edit & delete button. Use props.id to call dispatch with id as payload
   return (
-    <div className="flex flex-col self-center w-80 mb-1 rounded">
+    <div className="flex flex-col self-center w-96 mb-1 rounded shadow shadow-slate-900">
       <div className="flex justify-between text-gray-100 bg-gray-600 border-2 border-gray-700 rounded pl-1">
         <h4 id={props.id}>{props.content}</h4>
         <div>

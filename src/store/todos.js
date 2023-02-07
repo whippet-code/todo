@@ -9,7 +9,7 @@ export const todoSlice = createSlice({
     data: {
       //individual todo item id=1
       1: {
-        content: "First Todo",
+        content: "Sample Todo",
         completed: false,
       },
     },

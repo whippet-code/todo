@@ -32,8 +32,8 @@ function Todos() {
   // itterate the state.data object and create a todo from each id (pass as props????? to each Todo)
   return (
     <div className="flex flex-col self-center bg-slate-500 p-4 w-100 h-screen rounded">
-      <h1 className="text-gray-100 font-light text-4xl">
-        Todo List - React Redux v.1
+      <h1 className="text-gray-100 font-light text-3xl">
+        Todo List - React Redux v1
       </h1>
       <form
         className="flex self-center content-center w-100 mb-1 p-2"
@@ -44,17 +44,18 @@ function Todos() {
       >
         <input
           type="text"
-          className="pl-1"
+          className="pl-1 rounded mr-1 max-w-full"
           id="inputField"
           ref={inputRef}
           name="value"
           placeholder="new task"
           onChange={(e) => setUserInput(e.target.value)} //when user types into box update the userInput state
           value={userInput}
+          autoComplete="off"
         ></input>
         <button
           type="submit"
-          className="bg-green-900 h-8 w-8 rounded text-white border-x-yellow-50 border-2"
+          className="bg-green-900 h-8 w-16 rounded text-white border-x-yellow-50 border-2"
           onClick={(e) => dispatch(addTodo(userInput))}
         >
           +
