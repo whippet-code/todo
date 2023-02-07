@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 //import components
 import Todo from "./Todo";
@@ -22,12 +22,11 @@ function Todos() {
   // set up state for userInput in add To box
   let [userInput, setUserInput] = useState("");
 
-  ////////////
-  //////////////
-  // HERE - setting up useRef and useEffect to track userInput, focus? clear input field upon submit
-  // Edit todo needs coding
-
+  // auto focus on new todo input field
   let inputRef = useRef("");
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   // Input field and add todo.
   // itterate the state.data object and create a todo from each id (pass as props????? to each Todo)
@@ -36,17 +35,26 @@ function Todos() {
       <h1 className="text-gray-100 font-light text-4xl">
         Todo List - React Redux v.1
       </h1>
-      <form className="flex self-center content-center w-100 mb-1 p-2">
+      <form
+        className="flex self-center content-center w-100 mb-1 p-2"
+        onSubmit={(e) => {
+          e.preventDefault(); // prevent page render upon submit
+          e.target[0].value = ""; //clear out the input field text
+        }}
+      >
         <input
           type="text"
+          id="inputField"
+          ref={inputRef}
           name="value"
-          onChange={(e) => setUserInput(e.target.value)}
+          placeholder="new task"
+          onChange={(e) => setUserInput(e.target.value)} //when user types into box update the userInput state
           value={userInput}
         ></input>
         <button
-          type="button"
+          type="submit"
           className="bg-green-900 h-8 w-8 rounded text-white border-x-yellow-50 border-2"
-          onClick={() => dispatch(addTodo(userInput))}
+          onClick={(e) => dispatch(addTodo(userInput))}
         >
           +
         </button>
