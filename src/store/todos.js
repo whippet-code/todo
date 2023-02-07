@@ -40,7 +40,7 @@ export const todoSlice = createSlice({
     editTodo: (state, action) => {
       //prompt user for new todo text
       let newTodo = prompt(
-        "Editied todo note. Press return with no input to cancel edit."
+        "Edit todo note. Press return with no input to cancel edit."
       );
       // only edit if a value is entered
       if (newTodo !== "") {
